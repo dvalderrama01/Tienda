@@ -1,0 +1,68 @@
+{% extends 'layout_2.html' %}
+{% block content %}
+<style>
+a{
+  color: rgb(255, 255, 255); 
+}
+</style>
+<body>
+  <div class="col-md-50">
+    <div class="container">
+      <div class="header-conten-right">
+        <h2 class="h3 mb-4 text-center mt-4">
+          <a href="/" >Regresar</a>
+          <br><br>
+            <div class="table-responsive">
+              <table class="table">
+                <tr>
+                  <th style="font-size:100%;">Producto</th>
+                  <th style="font-size:100%;">Precio Unitario</th>
+                  <th style="font-size:100%;">Cantidad</th>
+                  <th style="font-size:100%;">Valor Total</th>
+                </tr>
+                {% for compras in compras %}
+                <tr>
+                  <td style="color:black;font-size:80%;">{{compras[1]}}</td>
+                  <td style="color:black;font-size:80%;">{{compras[2]}}</td>
+                  <td style="color:black;font-size:80%;">{{compras[3]}}</td>
+                  <td style="color:black;font-size:80%;">$ {{compras[4]}}</td>
+                </tr>
+                
+                {% endfor %}
+               
+                <tr>
+                  <td style="color:black;font-size:80%;"></td>
+                  <td style="color:black;font-size:80%;"></td>
+                  <td style="color:black;font-size:100%; font-weight: bold;">Sub Total</td>
+                  <td style="color:black;font-size:100%; font-weight: bold;">$ {{total}}</td>
+                </tr>
+
+                <tr>
+                  <td style="color:black;font-size:80%;"></td>
+                  <td style="color:black;font-size:80%;"></td>
+                  <td style="color:black;font-size:100%; font-weight: bold;">IVA</td>
+                  <td style="color:black;font-size:100%; font-weight: bold;">$ {{iva}}</td>
+                </tr>
+
+                <tr>
+                  <td style="color:black;font-size:80%;" ></td>
+                  <td style="color:black;font-size:80%;"></td>
+                  <td style="color:black;font-size:100%; font-weight: bold;">Total pagar</td>
+                  <td style="color:black;font-size:100%; font-weight: bold;">$ {{pago}}</td>
+                </tr>
+
+
+
+
+
+              </table>
+              <a class="btn btn-success btn-block text-uppercase mt-4" href="/pagar" 
+              style=" font-size: 20px; font-weight:bold; background-color:white; color: #03C72F;  align-self: center; align-items: center;"> Pagar</a>
+           
+            </div>
+        </h2>
+      </div>
+    </div>
+  </div>
+</body>
+{% endblock %}

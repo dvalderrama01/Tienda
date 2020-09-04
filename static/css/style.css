@@ -1,0 +1,32 @@
+.imagen-fondo{
+    background: url(../image/background.jpg);
+    background-size: cover;
+    min-height: 600px;
+}
+.transparencia{
+    background: rgba(106, 176, 76,0.8);
+    background-size: cover;
+    min-height: 600px;
+}
+
+.navbar{
+    box-shadow: 2px 2px 5px #000000;
+    opacity: .9;
+}
+
+.imagen-formulario{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.imagen-formulario img{
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.imagensita{
+    border: 1px solid #cccccc;
+}
+
+

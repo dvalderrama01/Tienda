@@ -1,0 +1,84 @@
+{% extends 'layout_2.html' %}
+{% block content %}
+
+<script>
+    function agregarProducto(operacion, id) {
+        var valorACtual = document.getElementById(id).value;
+        switch (operacion) {
+            case "menos":
+                if(document.getElementById(id).value!=1){
+                    document.getElementById(id).value = parseInt(valorACtual) - 1;
+                }
+                break;
+                
+
+            case "mas":
+                document.getElementById(id).value = parseInt(valorACtual) + 1;
+                break;
+
+            default:
+                break;
+        }
+
+    }
+    //detecta el cambio el el input
+    function cambio() {
+        console.log("estoy cambiando");
+    }
+</script>
+
+<h1>CONOZCA NUESTRO PRODUCTOS</h1>
+<hr>
+<!-- La clase row permite dividir la pagina por columnas, las paginas web tienen 12 columnas -->
+<div class="table-responsive">
+    <h1>Productos</h1>
+    {% with alerta_compra = get_flashed_messages() %}
+    <!-- Si existe un mensaje entra -->
+    {% if alerta_compra %}
+    {% for alerta in alerta_compra %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <p>{{alerta}}</p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="container">
+        <div class="row row-cols-5">
+            {% for products in products %}
+            <div class="container ">
+                <div class="shadow p-3 mb-5 bg-white rounded " style="text-align:center" >
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="p-2 bd-highlight" >
+                            <img src="{{products[3]}}" width="180px">
+                            <p>{{products[1]}} <br>$ {{products[2]}}</p>
+                        </div>
+                        <div class="pb-2">
+                            <form class="form-inline" action="/compras/{{products[0]}}" method="POST">
+                                <div class="form-group m-auto ">
+                                    <button class="btn btn-outline-success" type="button"
+                                        onclick="agregarProducto('menos','{{products[1]}}')">-</button>
+                                    <input class="form-control" name="cantidad" id="{{products[1]}}" value="1" style="width : 50px; text-align:center" >
+                                    <button class="btn btn-outline-success" type="button"
+                                        onclick="agregarProducto('mas','{{products[1]}}')">+</button>
+                                </div>
+                                <br>
+                                <button class="btn btn-success btn-block text-uppercase mt-4" type="submit"><i
+                                        class="fa fa-shopping-cart"></i>
+                                    Comprar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<br>
+<a href="/verCompras" class="btn btn-success btn-block text-uppercase mt-4" style=" font-size: 20px; font-weight:bold; background-color:white; color: #03C72F;" ><i class="fa fa-shopping-cart"></i> &nbsp;&nbsp;Facturar
+    compras</a>
+    <br>  <br>
+{% endblock %}

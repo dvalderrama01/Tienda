@@ -1,0 +1,48 @@
+{% extends 'layout_2.html' %}
+{% block content %}
+
+<body>
+
+
+    <div class="container">
+        <div class="card card-signin my-1">
+            <div class="card-body">
+               
+
+                    <h4 class="modal-title">Compra Exitosa</h4>
+                </div>
+                <div class="usuario">
+                      <div class="form-group">
+                          <div class="form-group col-md-10">
+                              <label for="user" >{{usuario_registrado}}</label>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="form-group col-md-10">
+                            <label for="user" >Valor Compra: $ {{pago}}</label>
+                        </div>
+                    </div>
+                      <div class="form-group">
+                        <div class="form-group col-md-10">
+                            <label for="user" > Tu Compra Fue Realizada con Exito!!!!</label>
+                        </div>
+                    </div>
+                     
+                    <a class="btn btn-success btn-block text-uppercase mt-4" href="/"
+                    class="btn btn-primary btn-responsive btn-lg" > Seguir Comprando</a>
+              </div>
+              </div>
+          </div>
+          <!-- /.modal-content -->
+
+
+
+
+
+                    <br><br>
+                   
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

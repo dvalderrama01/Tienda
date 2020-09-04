@@ -1,0 +1,122 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<body>
+    <div class="container">
+        <div class="card card-signin my-1">
+            <div class="card-body">
+                <div class="imagen-formulario">
+                    <h2 class="card-title text-center">INICIAR SESION</h2>
+                    <img src="{{url_for('static', filename = 'image/food.svg')}}" width="60" height="60" alt=""
+                        loading="food">
+                </div>
+                <!-- FORMULARIO LOGIN -->
+                <form class="form-signin px-4" action="/login" method="POST">
+                    <div class="form-label-group mt-1">
+
+                        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Direccion Correo" required
+                            autofocus>
+                        <label for="inputEmail"><i class="fa fa-envelope-o"></i>&nbsp;Correo Electronico</label>
+                    </div>
+
+                    <div class="form-label-group mt-4">
+                        <input type="password" name="pass" id="inputPassword" class="form-control" placeholder="Contraseña"
+                            required>
+                        <label for="inputPassword"><i class="fa fa-lock"></i>&nbsp;Contraseña</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox my-3  ">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                        <label class="custom-control-label" for="customCheck1">Recordar Contraseña</label>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-success btn-block text-uppercase mt-4" type="submit"><i
+                                    class="fa fa-sign-in"></i>&nbsp;&nbsp;Ingresar</button>
+                        </div>
+                        <div class="col">
+                            <a class="btn btn-success btn-block text-uppercase mt-4" data-toggle="modal"
+                                data-target="#myModal" href="/"><i
+                                    class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;Registrarse</a>
+                        </div>
+                    </div>
+                    <br><br>
+                    {% with messages = get_flashed_messages() %}
+                    <!-- Si existe un mensaje entra -->
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-{{alerta}} alert-dismissible fade show" role="alert">
+                        <p>{{message}}</p>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- MODAL REGISTRO -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Ventana de Registro</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- FORMULARIO REGISTRO -->
+                    <form action="/register" method="POST">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="email"> <i class="fa fa-envelope-o"></i>&nbsp;Correo
+                                    Electronico</label>
+                                <input type="text" class="form-control" name="email" id="email"
+                                    placeholder="nombre@ejemplo.com">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="password"><i class="fa fa-lock"></i>&nbsp;Contraseña</label>
+                                <input type="password" class="form-control" name="password" id="password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="id"><i class="fa fa-id-card"></i> Identificacion</label>
+                            <input type="text" class="form-control" name="id" id="id"
+                                placeholder="Ingrese su documento de identidad"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="name"><i class="fa fa-user"></i>&nbsp;Nombre</label>
+                            <input type="text" class="form-control" id="name" name="name"
+                                placeholder="Ingrese sus nombres">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname"><i class="fa fa-user"></i>&nbsp;Apellido</label>
+                            <input type="text" class="form-control" id="lastname" name="lastname"
+                                placeholder="Ingrese sus apellidos">
+                        </div>
+                        <div class="form-group">
+                            <label for="address"><i class="fa fa-address-book-o"></i>&nbsp;Direccion</label>
+                            <input type="text" class="form-control" id="address" name="address"
+                                placeholder="Ingrese su Dirección">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone"><i class="fa fa-phone"></i>&nbsp;Telefono</label>
+                            <input type="text" class="form-control" id="phone" name="phone"
+                                placeholder="Ingrese su número de Telefono">
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block mt-4 mb-3">Registrarme</button>
+                    </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+</body>
+{% endblock %}
